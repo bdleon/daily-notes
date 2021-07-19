@@ -30,7 +30,7 @@ const array ={
     timeSpent: 3
 }
 notes.push(array);
-console.log(notes);
+ //console.log(notes);
 // for (const note of notes) {
 //     console.log(note.subject);
 // }
@@ -45,11 +45,37 @@ console.log(notes);
     
 // }
 
-const searchTerm = "feeling confident";
+// const searchTerm = "feeling confident";
 
-for (const note of notes) {
-    if (note.feeling === searchTerm) {
-        console.log(`the subject: ${note.subject} i felt pretty confident`)
+// for (const note of notes) {
+//     if (note.feeling === searchTerm) {
+//         console.log(`the subject: ${note.subject} i felt pretty confident`)
 
-    }
-}
+//     }
+// }
+
+const createNote = (note) => {
+const today = new Date()
+let currentDate  = today.getFullYear()+'-'+(today.getMonth()+1)+'-'+today.getDate()+'/'+
+today.toLocaleTimeString();
+const lastIndex = notes.length -1;
+const currentLastNote = notes[lastIndex];
+const maxId = currentLastNote.id;
+const newIdForNote = maxId + 1;
+note.date = currentDate;
+note.id = newIdForNote;
+notes.push(note);
+
+};
+
+
+const moreNewerNote ={
+    subject: 'adding objects to a array',
+    feeling: 'confused',
+    timeSpent: 4,
+    date:''
+    
+};
+
+createNote(moreNewerNote);
+console.log(notes);
